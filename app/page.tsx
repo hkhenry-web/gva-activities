@@ -1,5 +1,5 @@
-import { ActivitySearch } from '../components/ActivitySearch';
-import { FeeTable } from '../components/FeeTable';
+import { ActivitySearch } from '@/components/ActivitySearch';
+import { FeeTable } from '@/components/FeeTable';
 
 export default function Home() {
   return (
