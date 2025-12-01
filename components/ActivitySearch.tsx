@@ -4,19 +4,54 @@ import { useState } from 'react';
 import { Search, ExternalLink } from 'lucide-react';
 
 const cities = {
-  vancouver: { name: 'Vancouver', url: 'https://ca.apm.activecommunities.com/vancouver/activity/search?activitySearchText=' },
-  burnaby: { name: 'Burnaby', url: 'https://ca.apm.activecommunities.com/burnaby/activity/search?activitySearchText=' },
-  coquitlam: { name: 'Coquitlam', url: 'https://ca.apm.activecommunities.com/coquitlam/activity/search?activitySearchText=' },
-  portcoquitlam: { name: 'Port Coquitlam', url: 'https://ca.apm.activecommunities.com/portcoquitlam/activity/search?activitySearchText=' },
-  portmoody: { name: 'Port Moody', url: 'https://ca.apm.activecommunities.com/portmoody/activity/search?activitySearchText=' },
-  newwest: { name: 'New Westminster', url: 'https://ca.apm.activecommunities.com/newwestparksrecreation/activity/search?activitySearchText=' },
-  richmond: { name: 'Richmond', url: 'https://ca.apm.activecommunities.com/richmond/activity/search?activitySearchText=' },
-  surrey: { name: 'Surrey', url: 'https://ca.apm.activecommunities.com/surrey/activity/search?activitySearchText=' },
-  northvan_city: { name: 'North Van (City)', url: 'https://ca.apm.activecommunities.com/nvrc/activity/search?activitySearchText=' },
-  northvan_district: { name: 'North Van (District)', url: 'https://ca.apm.activecommunities.com/dnv/activity/search?activitySearchText=' },
-  westvan: { name: 'West Vancouver', url: 'https://ca.apm.activecommunities.com/westvancouverrec/activity/search?activitySearchText=' },
-  delta: { name: 'Delta', url: 'https://ca.apm.activecommunities.com/delta/activity/search?activitySearchText=' },
-  mapleridge: { name: 'Maple Ridge', url: 'https://ca.apm.activecommunities.com/mapleridge/activity/search?activitySearchText=' },
+  vancouver: {
+    name: 'Vancouver',
+    url: 'https://anc.ca.apm.activecommunities.com/vancouver/activity/search?activitySearchText='
+  },
+  burnaby: {
+    name: 'Burnaby',
+    url: 'https://ca.apm.activecommunities.com/burnaby/activity/search?activitySearchText='
+  },
+  coquitlam: {
+    name: 'Coquitlam',
+    url: 'https://cityofcoquitlam.perfectmind.com/23902/Clients/BookMe4?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False'
+  },
+  portcoquitlam: {
+    name: 'Port Coquitlam',
+    url: 'https://ca.apm.activecommunities.com/cityofportcoquitlam/activity/search?activitySearchText='
+  },
+  portmoody: {
+    name: 'Port Moody',
+    url: 'https://cityofportmoody.perfectmind.com/Contacts/BookMe4?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False'
+  },
+  newwest: {
+    name: 'New Westminster',
+    url: 'https://cityofnewwestminster.perfectmind.com/23693/Clients/BookMe4?widgetId=50a33660-b4f7-44d9-9256-e10effec8641'
+  },
+  richmond: {
+    name: 'Richmond',
+    url: 'https://richmondcity.perfectmind.com/23650/Clients/BookMe4?widgetId=15f6af07-39c5-473e-b053-96653f77a406'
+  },
+  surrey: {
+    name: 'Surrey',
+    url: 'https://cityofsurrey.perfectmind.com/23615/Clients/BookMe4?widgetId=b4059e75-9755-401f-a7b5-d7c75361420d'
+  },
+  northvan: {  // 包晒 City + District (NVRC 同 DNV 都用同一個系統)
+    name: 'North Vancouver',
+    url: 'https://nvrc.perfectmind.com/23734/Clients/BookMe4?widgetId=a28b2c65-61af-407f-80d1-eaa58f30a94a'
+  },
+  westvan: {
+    name: 'West Vancouver',
+    url: 'https://ca.apm.activecommunities.com/westvanrec/activity_search?activitySearchText='
+  },
+  delta: {
+    name: 'Delta',
+    url: 'https://cityofdelta.perfectmind.com/24140/Clients/BookMe4?widgetId=83ce4775-1cd3-4f8f-8189-768fa00e599a'
+  },
+  mapleridge: {
+    name: 'Maple Ridge',
+    url: 'https://cityofmapleridge.perfectmind.com/23724/Reports/BookMe4?widgetId=47fd20cf-24b1-4cbe-89a0-d25473cacb49'
+  }
 };
 
 export function ActivitySearch() {
