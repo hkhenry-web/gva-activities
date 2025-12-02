@@ -2,22 +2,20 @@ import ActivitySearch from '../components/ActivitySearch';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 dark:from-gray-950 dark:to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <header className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-800 dark:text-white mb-4">
-            大溫 Drop-in 活動時間表（2025最新）
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            一選即顯示 ⋅ 游泳 ⋅ 羽毛球 ⋅ 健身 ⋅ 壁球 全有
-          </p>
-        </header>
-       
+    <div className="min-h-screen bg-white dark:bg-white py-16"> {/* ← 呢行改咗，永久純白 */}
+      <div className="max-w-3xl mx-auto px-6 text-center space-y-12">
+        <h1 className="text-5xl font-bold text-gray-800">
+          大溫 Drop-in 時間表（2025最新）
+        </h1>
+        <p className="text-xl text-gray-600">
+          一選即開官方最乾淨時間表 ⋅ 游泳 ⋅ 羽毛球 ⋅ 健身 ⋅ 壁球
+        </p>
+
         <ActivitySearch />
-       
-        <footer className="mt-20 text-center text-gray-500 text-sm">
-          Made with ❤️ for 大溫港人 ⋅ 2025年12月
-        </footer>
+
+        <p className="text-lg text-gray-600 font-medium">
+          全部連結 2025年12月實測有效 ⋅ 永久可用
+        </p>
       </div>
     </div>
   );
