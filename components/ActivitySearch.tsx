@@ -4,16 +4,16 @@ import { useState } from 'react';
 import { Search } from 'lucide-react';
 
 const cities = {
-  all: { name: 'All Cities', url: '' }, // 只是用來做選單
+  all: { name: 'All Cities', url: '',supportsKeyword: false }, // 只是用來做選單
   vancouver: { 
     name: 'Vancouver', 
     url: 'https://anc.ca.apm.activecommunities.com/vancouver/activity/search?activitySearchText=',
-    supportsKeyword: true 
+    supportsKeyword: false 
   },
   burnaby: { 
     name: 'Burnaby', 
     url: 'https://ca.apm.activecommunities.com/burnaby/activity/search?activitySearchText=',
-    supportsKeyword: true 
+    supportsKeyword: false 
   },
   coquitlam: { 
     name: 'Coquitlam', 
@@ -23,7 +23,7 @@ const cities = {
   portcoquitlam: { 
     name: 'Port Coquitlam', 
     url: 'https://ca.apm.activecommunities.com/cityofportcoquitlam/activity/search?activitySearchText=',
-    supportsKeyword: true 
+    supportsKeyword: false 
   },
   portmoody: { 
     name: 'Port Moody', 
@@ -53,7 +53,7 @@ const cities = {
   westvan: { 
     name: 'West Vancouver', 
     url: 'https://ca.apm.activecommunities.com/westvanrec/activity_search?activitySearchText=',
-    supportsKeyword: true 
+    supportsKeyword: false 
   },
   delta: { 
     name: 'Delta', 
