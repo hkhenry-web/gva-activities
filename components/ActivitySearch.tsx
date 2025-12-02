@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 const dropInLinks = {
   vancouver: 'https://ca.apm.activecommunities.com/vancouver/ActiveNet_Calendar',
   burnaby: 'https://ca.apm.activecommunities.com/burnaby/ActiveNet_Calendar',
@@ -20,24 +18,30 @@ const dropInLinks = {
 type CityKey = keyof typeof dropInLinks;
 
 export default function ActivitySearch() {
-  const [selectedUrl, setSelectedUrl] = useState<string | null>(null);
-
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const city = e.target.value as CityKey;
     if (city && dropInLinks[city]) {
-      setSelectedUrl(dropInLinks[city]);
+      window.open(dropInLinks[city], '_blank', 'noopener,noreferrer');
+      e.target.value = ''; // 選完即重置，方便再選
     }
   };
 
   return (
-    <div className="space-y-8">
-      <div className="text-center">
+    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 dark:from-gray-950 dark:to-gray-900 py-16">
+      <div className="max-w-3xl mx-auto px-6 text-center space-y-12">
+        <h1 className="text-5xl font-bold text-gray-800 dark:text-white">
+          大溫 Drop-in 時間表（2025最新）
+        </h1>
+        <p className="text-xl text-gray-600 dark:text-gray-300">
+          一選即開官方最乾淨時間表 ⋅ 游泳 ⋅ 羽毛球 ⋅ 健身 ⋅ 壁球
+        </p>
+
         <select 
           onChange={handleChange}
           defaultValue=""
-          className="w-full max-w-lg mx-auto px-6 py-5 text-xl font-semibold border-4 border-blue-600 rounded-2xl bg-white dark:bg-gray-800 shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-400"
+          className="w-full px-8 py-6 text-2xl font-semibold bg-white dark:bg-gray-800 border-4 border-blue-600 rounded-3xl shadow-2xl focus:outline-none focus:ring-8 focus:ring-blue-300"
         >
-          <option value="" disabled>👇 選擇城市，即刻顯示 Drop-in 時間表 👇</option>
+          <option value="" disabled>👇 選擇城市 👇</option>
           <option value="vancouver">Vancouver</option>
           <option value="burnaby">Burnaby</option>
           <option value="coquitlam">Coquitlam</option>
@@ -51,18 +55,11 @@ export default function ActivitySearch() {
           <option value="delta">Delta</option>
           <option value="mapleridge">Maple Ridge</option>
         </select>
-      </div>
 
-      {selectedUrl && (
-        <div className="w-full -mx-4 md:mx-0">
-          <iframe 
-            src={selectedUrl}
-            className="w-full h-screen border-0 rounded-xl shadow-2xl"
-            title="Drop-in Calendar"
-            loading="lazy"
-          />
-        </div>
-      )}
+        <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">
+          全部連結 2025年12月實測有效 ⋅ 永久可用
+        </p>
+      </div>
     </div>
   );
 }
