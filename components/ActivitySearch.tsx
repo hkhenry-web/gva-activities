@@ -22,44 +22,34 @@ export default function ActivitySearch() {
     const city = e.target.value as CityKey;
     if (city && dropInLinks[city]) {
       window.open(dropInLinks[city], '_blank', 'noopener,noreferrer');
-      e.target.value = ''; // 選完即重置，方便再選
+      e.target.value = '';
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 dark:from-gray-950 dark:to-gray-900 py-16">
-      <div className="max-w-3xl mx-auto px-6 text-center space-y-12">
-        <h1 className="text-5xl font-bold text-gray-800 dark:text-white">
-          大溫 Drop-in 時間表（2025最新）
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300">
-          一選即開官方最乾淨時間表 ⋅ 游泳 ⋅ 羽毛球 ⋅ 健身 ⋅ 壁球
-        </p>
-
-        <select 
-          onChange={handleChange}
-          defaultValue=""
-          className="w-full px-8 py-6 text-2xl font-semibold bg-white dark:bg-gray-800 border-4 border-blue-600 rounded-3xl shadow-2xl focus:outline-none focus:ring-8 focus:ring-blue-300"
-        >
-          <option value="" disabled>👇 選擇城市 👇</option>
-          <option value="vancouver">Vancouver</option>
-          <option value="burnaby">Burnaby</option>
-          <option value="coquitlam">Coquitlam</option>
-          <option value="portcoquitlam">Port Coquitlam</option>
-          <option value="portmoody">Port Moody</option>
-          <option value="newwest">New Westminster</option>
-          <option value="richmond">Richmond</option>
-          <option value="surrey">Surrey</option>
-          <option value="northvan">North Vancouver</option>
-          <option value="westvan">West Vancouver</option>
-          <option value="delta">Delta</option>
-          <option value="mapleridge">Maple Ridge</option>
-        </select>
-
-        <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">
-          全部連結 2025年12月實測有效 ⋅ 永久可用
-        </p>
-      </div>
+    <div className="relative">
+      <select 
+        onChange={handleChange}
+        defaultValue=""
+        className="w-full appearance-none bg-white border-none rounded-3xl shadow-2xl px-10 py-8 text-2xl font-bold text-gray-800 cursor-pointer transition-all duration-300 hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-8 focus:ring-blue-400 focus:scale-105"
+        style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'m6 8 4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 2.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
+      >
+        <option value="" disabled className="text-gray-400">
+          👇 選擇城市，即刻彈出 Drop-in 時間表 👇
+        </option>
+        <option value="vancouver">Vancouver</option>
+        <option value="burnaby">Burnaby</option>
+        <option value="coquitlam">Coquitlam</option>
+        <option value="portcoquitlam">Port Coquitlam</option>
+        <option value="portmoody">Port Moody</option>
+        <option value="newwest">New Westminster</option>
+        <option value="richmond">Richmond</option>
+        <option value="surrey">Surrey</option>
+        <option value="northvan">North Vancouver</option>
+        <option value="westvan">West Vancouver</option>
+        <option value="delta">Delta</option>
+        <option value="mapleridge">Maple Ridge</option>
+      </select>
     </div>
   );
 }
