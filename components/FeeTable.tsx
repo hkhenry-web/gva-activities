@@ -1,4 +1,4 @@
-export function FeeTable() {
+export default function FeeTable() {
   return (
     <div className="mt-12 bg-amber-50 dark:bg-amber-900/20 rounded-2xl p-8">
       <h2 className="text-2xl font-bold text-center mb-6 text-amber-800 dark:text-amber-200">
