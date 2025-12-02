@@ -84,11 +84,13 @@ export default function ActivitySearch() {
       ? (Object.keys(cities).filter(k => k !== 'all') as CityKey[])
       : [selectedCity];
 
-    citiesToOpen.forEach((key) => {
-      const city = cities[key];
-      const finalUrl = city.supportsKeyword ? city.url + encoded : city.url;
-      window.open(finalUrl, '_blank', 'noopener,noreferrer');
-    });
+   citiesToOpen.forEach((key) => {
+  const city = cities[key];
+  const finalUrl = 'supportsKeyword' in city && city.supportsKeyword 
+    ? city.url + encoded 
+    : city.url;
+  window.open(finalUrl, '_blank', 'noopener,noreferrer');
+});
   };
 
   return (
