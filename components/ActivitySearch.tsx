@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
 const dropInLinks = {
   vancouver: 'https://ca.apm.activecommunities.com/vancouver/ActiveNet_Calendar',
   burnaby: 'https://ca.apm.activecommunities.com/burnaby/ActiveNet_Calendar',
   coquitlam: 'https://cityofcoquitlam.perfectmind.com/23902/Clients/BookMe4BookingPages/Classes?calendarId=e827dd8f-aa12-4dcd-9cdb-5cf4fcf24c30&widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False',
-  portcoquitlam: 'https://anc.ca.apm.activecommunities.com/cityofportcoquitlam/calendars?onlineSiteId=0&no_scroll_top=true&defaultCalendarId=2&locationId=55&displayType=0&view=2', // 您嘅神連結，最乾淨
+  portcoquitlam: 'https://anc.ca.apm.activecommunities.com/cityofportcoquitlam/calendars?onlineSiteId=0&no_scroll_top=true&defaultCalendarId=2&locationId=55&displayType=0&view=2',
   portmoody: 'https://cityofportmoody.perfectmind.com/Contacts/BookMe4BookingPages/Classes?calendarId=3c951d03-4f0d-4a5f-9c3d-9b8f8e9b9e9b&widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False',
   newwest: 'https://cityofnewwestminster.perfectmind.com/23693/Clients/BookMe4BookingPages/Classes?calendarId=510214f6-df2d-4ead-9caf-e3883d73d090&widgetId=50a33660-b4f7-44d9-9256-e10effec8641&embed=False',
   richmond: 'https://richmondcity.perfectmind.com/23650/Clients/BookMe4BookingPages/BookingCoursesPage?calendarId=80fd179d-4560-48e7-9f7c-9c59b7568e8d&widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False',
@@ -18,44 +20,49 @@ const dropInLinks = {
 type CityKey = keyof typeof dropInLinks;
 
 export default function ActivitySearch() {
+  const [selectedUrl, setSelectedUrl] = useState<string | null>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const city = e.target.value as CityKey;
     if (city && dropInLinks[city]) {
-      window.open(dropInLinks[city], '_blank', 'noopener,noreferrer');
-      e.target.value = ''; // 選完即重置
+      setSelectedUrl(dropInLinks[city]);
     }
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-8 text-center space-y-8">
-      <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
-        大溫 Drop-in 活動一鍵直達（2025最新官方時間表）
-      </h2>
-      
-      <select 
-        onChange={handleChange}
-        defaultValue=""
-        className="w-full px-6 py-5 text-lg border-4 border-blue-600 rounded-2xl bg-white dark:bg-gray-800 shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-400"
-      >
-        <option value="" disabled>👇 選擇城市，即刻彈出 Drop-in 時間表 👇</option>
-        <option value="vancouver">Vancouver</option>
-        <option value="burnaby">Burnaby</option>
-        <option value="coquitlam">Coquitlam</option>
-        <option value="portcoquitlam">Port Coquitlam</option>
-        <option value="portmoody">Port Moody</option>
-        <option value="newwest">New Westminster</option>
-        <option value="richmond">Richmond</option>
-        <option value="surrey">Surrey</option>
-        <option value="northvan">North Vancouver</option>
-        <option value="westvan">West Vancouver</option>
-        <option value="delta">Delta</option>
-        <option value="mapleridge">Maple Ridge</option>
-      </select>
+    <div className="space-y-8">
+      <div className="text-center">
+        <select 
+          onChange={handleChange}
+          defaultValue=""
+          className="w-full max-w-lg mx-auto px-6 py-5 text-xl font-semibold border-4 border-blue-600 rounded-2xl bg-white dark:bg-gray-800 shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-400"
+        >
+          <option value="" disabled>👇 選擇城市，即刻顯示 Drop-in 時間表 👇</option>
+          <option value="vancouver">Vancouver</option>
+          <option value="burnaby">Burnaby</option>
+          <option value="coquitlam">Coquitlam</option>
+          <option value="portcoquitlam">Port Coquitlam</option>
+          <option value="portmoody">Port Moody</option>
+          <option value="newwest">New Westminster</option>
+          <option value="richmond">Richmond</option>
+          <option value="surrey">Surrey</option>
+          <option value="northvan">North Vancouver</option>
+          <option value="westvan">West Vancouver</option>
+          <option value="delta">Delta</option>
+          <option value="mapleridge">Maple Ridge</option>
+        </select>
+      </div>
 
-      <p className="text-base text-gray-600 dark:text-gray-300 font-medium">
-        全部連結 2025年12月1日 23:00 實測有效<br />
-        一開即見游泳⋅羽毛球⋅健身⋅壁球時間表（最乾淨官方版）
-      </p>
+      {selectedUrl && (
+        <div className="w-full -mx-4 md:mx-0">
+          <iframe 
+            src={selectedUrl}
+            className="w-full h-screen border-0 rounded-xl shadow-2xl"
+            title="Drop-in Calendar"
+            loading="lazy"
+          />
+        </div>
+      )}
     </div>
   );
 }
